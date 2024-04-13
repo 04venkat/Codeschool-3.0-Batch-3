@@ -1,0 +1,91 @@
+<div class="bg-body-secondary h-100">
+    <div class="container-fluid d-flex justify-content-center gap-5 align-items-center">
+        <div class="w-25">
+            <form [formGroup]="signInForm"
+                class="w-100 bg-white px-3 my-5 py-3 border border-white rounded-3 d-flex flex-column gap-3 shadow-lg">
+                <input type="email" class="form-control p-3" id="email" placeholder="Email Address"
+                    formControlName="signInEmail">
+                @if(signInEmail?.invalid && (signInEmail?.dirty || signInEmail?.touched) ){
+                @if(signInEmail?.errors?.['required']){
+                <span>eMail is Required.</span>
+                }
+                }
+                <input type="password" class="form-control p-3" id="password" formControlName="signInPassword"
+                    placeholder="Password">
+                @if(signInPassword?.invalid && (signInPassword?.dirty || signInPassword?.touched) ){
+                @if(signInPassword?.errors?.['required']){
+                <span>Password is Required.</span>
+                }
+                }
+                <button type="submit" class="btn btn-primary p-2" [disabled]="!signInForm.valid" (click)="signIn()">Sign
+                    In</button>
+                <hr>
+                <div class="d-flex justify-content-center m-0 p-0">
+                    <button type="button" class="btn btn-success px-4 py-2" data-bs-toggle="modal"
+                        data-bs-target="#createAccount">Create new Account</button>
+                </div>
+            </form>
+            <div class="modal fade" id="createAccount" data-bs-keyboard="false" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header px-5 d-flex flex-column gap-2 align-items-start">
+                            <h1 class="modal-title fs-3 fw-bold m-0 p-0">Sign Up</h1>
+                            <p class="m-0 p-0">It's quick and easy!</p>
+                        </div>
+                        <div class="modal-body">
+                            <form [formGroup]="signUpForm"
+                                class="d-flex flex-column pt-2 justify-content-between align-items-center gap-4">
+
+                                <div class="d-flex gap-3 w-75">
+                                    <div class="d-flex flex-column">
+                                        <input type="text" class="form-control" placeholder="Name"
+                                            formControlName="signUpName">
+                                        @if(signUpName?.invalid && (signUpName?.dirty || signUpName?.touched) ){
+                                        @if(signUpName?.errors?.['required']){
+                                        <span>Required Field.</span>
+                                        }
+                                        @if(signUpName?.errors?.['minlength']){
+                                        <span>Enter Full Name</span>
+                                        }
+                                        }
+                                    </div>
+
+                                    <div class="d-flex flex-column">
+                                        <input type="email" class="form-control" placeholder="e-Mail"
+                                            formControlName="signUpEmail">
+                                        @if(signUpEmail?.invalid && (signUpEmail?.dirty || signUpEmail?.touched) ){
+                                        @if(signUpEmail?.errors?.['required']){
+                                        <span>Required Field.</span>
+                                        }
+                                        }
+                                        @if(signUpEmail?.errors?.['pattern']){
+                                        <span>Invalid Email!</span>
+                                        }
+                                    </div>
+                                </div>
+
+                                <div class="d-flex gap-3 justify-content-center">
+                                    <div class="d-flex flex-column">
+                                        <input type="password" class="form-control" placeholder="Password"
+                                            formControlName="signUpPassword">
+                                        @if(signUpPassword?.invalid && (signUpPassword?.dirty ||
+                                        signUpPassword?.touched) ){
+                                        @if(signUpPassword?.errors?.['required']){
+                                        <span>Required Field.</span>
+                                        }
+                                        }
+                                        @if(signUpPassword?.errors?.['minlength']){
+                                        <span>Invalid Password!</span>
+                                        }
+                                    </div>
+                                </div>
+                                <button type="submit" class="mb-3 btn btn-success" [disabled]="!signUpForm.valid"
+                                    data-bs-dismiss="modal" (click)="signUp()">Sign Up</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

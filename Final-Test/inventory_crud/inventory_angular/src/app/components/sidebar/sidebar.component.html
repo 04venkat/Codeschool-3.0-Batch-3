@@ -1,0 +1,17 @@
+<div class="container sticky-top">
+    <p class="display-1 text-center">IMS</p>
+    <div class="container d-flex flex-column mx-2 gap-3">
+        <a class="d-flex align-items-center gap-5 btn btn-light rounded-4 pt-3" routerLink="/add" routerLinkActive="active">
+            <h3><i class="fa-solid fa-bars fa-fw" style="color: rgb(254, 97, 97)"></i></h3>
+            <h5 style="color: black;">Add a Product</h5>
+        </a>
+        <a class="d-flex align-items-center gap-5 btn btn-light rounded-4 pt-3" routerLink="/view" routerLinkActive="active">
+            <h3><i class="fa-solid fa-eye fa-fw" style="color: rgb(254, 97, 97)"></i></h3>
+            <h5 style="color: black;">View Products</h5>
+        </a>
+        <a class="d-flex align-items-center gap-5 btn btn-light rounded-4 pt-3" (click)="signOut()">
+            <h3><i class="fa-solid fa-arrow-right-from-bracket" style="color: rgb(254, 97, 97)"></i></h3>
+            <h5 style="color: black;">Sign Out</h5>
+        </a>
+    </div>
+</div>

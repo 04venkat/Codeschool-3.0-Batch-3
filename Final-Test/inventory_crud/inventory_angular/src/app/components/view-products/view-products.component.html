@@ -1,0 +1,22 @@
+<div class="container-fluid h-100 bg-body-secondary">
+    <div class="container-fluid row justify-content-center">
+        <div class="col-4 mt-5">
+            <app-sidebar></app-sidebar>
+        </div>
+        <div class="col-8 p-5 mt-5 d-flex gap-3 flex-wrap">
+            @for (product of productData; track $index) {
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">{{product['name']}}</h5>
+                    <h6 class="card-subtitle mb-2 text-body-secondary">{{product['description']}}</h6>
+                    <h6 class="card-subtitle mb-2 text-body-secondary">Quantity: {{product['quantity']}}</h6>
+                    <div class="p-5 container d-flex justify-content-between">
+                        <button href="#" class="btn btn-outline-danger" routerLink="/update" [queryParams]="{ id: product['id'] }">Update</button>
+                        <button href="#" class="btn btn-outline-danger" (click)="deleteProduct(product['id'])">Delete</button>
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+<div class="container-fluid h-100 bg-body-secondary">
+    <div class="container-fluid row align-items-center">
+        <div class="col-4">
+            <app-sidebar></app-sidebar>
+        </div>
+        <div class="col-8">
+            <div class="container w-75">
+                <form [formGroup]="productForm"
+                    class="mt-5 w-100 bg-white px-3 my-5 py-3 border border-white rounded-3 d-flex flex-column gap-3 shadow-lg">
+                    <p class="display-6">Add Product Details</p>
+                    <input type="email" class="form-control p-3" id="desc" placeholder="Product Name"
+                        formControlName="productName">
+                    @if(productName?.invalid && (productName?.dirty || productName?.touched) ){
+                    @if(productName?.errors?.['required']){
+                    <span>Name is Required.</span>
+                    }
+                    }
+                    <input type="text" class="form-control p-3" id="desc" formControlName="productDesc"
+                        placeholder="Description">
+                    @if(productDesc?.invalid && (productDesc?.dirty || productDesc?.touched) ){
+                    @if(productDesc?.errors?.['required']){
+                    <span>Description is Required.</span>
+                    }
+                    }
+                    <input type="number" class="form-control p-3" id="desc" formControlName="productQuantity"
+                        placeholder="Quantity">
+                    @if(productQuantity?.invalid && (productQuantity?.dirty || productQuantity?.touched) ){
+                    @if(productQuantity?.errors?.['required']){
+                    <span>Quantity is Required.</span>
+                    }
+                    }
+                    <button type="submit" class="btn btn-outline-danger p-2" [disabled]="!productForm.valid"
+                        (click)="addProduct()">Add!</button>
+                    <hr>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
